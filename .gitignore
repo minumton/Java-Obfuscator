@@ -1,0 +1,9 @@
+.gradle/
+build/
+out/
+logs/
+obfuscated/
+.idea/
+*.iml
+*.class
+~$*.docx

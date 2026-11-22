@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Логирование: краткие сообщения в консоль, подробные — в файл logs/obfuscator.log -->
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Кодировка консоли берётся у JVM, чтобы пути с русскими буквами печатались правильно -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout charset="${sys:stdout.encoding:-${sys:sun.stdout.encoding:-${sys:file.encoding:-UTF-8}}}"
+                           pattern="%d{HH:mm:ss} %-5level %msg%n"/>
+        </Console>
+        <File name="File" fileName="logs/obfuscator.log" append="true">
+            <PatternLayout charset="UTF-8" pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{1} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="Console" level="INFO"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
